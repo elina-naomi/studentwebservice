@@ -5,7 +5,7 @@ import telran.ashkelon2020.model.Student;
 public interface StudentRepository {
 	boolean addStudent(Student student);
 	
-	Student findStudenById(int id);
+	Student findStudentById(int id);
 	
 	Student deleteStudenById(int id);
 	

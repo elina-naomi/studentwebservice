@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class StudentResponceDto {
+public class StudentResponseDto {
 	
 	Integer id;
 	String name;

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import telran.ashkelon2020.student.dto.MessageDto;
 import telran.ashkelon2020.student.dto.ScoreDto;
 import telran.ashkelon2020.student.dto.StudentDto;
-import telran.ashkelon2020.student.dto.StudentResponceDto;
+import telran.ashkelon2020.student.dto.StudentResponseDto;
 import telran.ashkelon2020.student.dto.StudentUpdateDto;
 import telran.ashkelon2020.student.service.MessagingService;
 import telran.ashkelon2020.student.service.StudentService;
@@ -34,12 +34,12 @@ public class StudentController {
 	}
 	
 	@GetMapping("/student/{id}")
-	public StudentResponceDto findStudent(@PathVariable Integer id) {
+	public StudentResponseDto findStudent(@PathVariable Integer id) {
 		return studentService.findStudent(id);
 	}
 	
 	@DeleteMapping("/student/{id}")
-	public StudentResponceDto deleteStudent(@PathVariable Integer id) {
+	public StudentResponseDto deleteStudent(@PathVariable Integer id) {
 		return studentService.deleteStudent(id);
 	}
 	

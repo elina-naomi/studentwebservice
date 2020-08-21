@@ -18,7 +18,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 	}
 
 	@Override
-	public Student findStudenById(int id) {
+	public Student findStudentById(int id) {
 		return students.get(id);
 	}
 
