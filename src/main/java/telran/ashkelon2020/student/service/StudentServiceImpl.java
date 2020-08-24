@@ -1,5 +1,9 @@
 package telran.ashkelon2020.student.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -96,6 +100,29 @@ public class StudentServiceImpl implements StudentService {
 		boolean res = student.addScore(scoreDto.getExamName(), scoreDto.getScore());
 		studentRepository.save(student);
 		return res;
+	}
+
+	@Override
+	public List<StudentResponseDto> findStudentsByName(String name) {
+		return studentRepository.findByName(name)
+				.map(s -> modelMapper.map(s, StudentResponseDto.class))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public long studentsQuantity(List<String> names) {
+		
+		return studentRepository.countByNameIn(names);
+	}
+
+	@Override
+	public List<StudentResponseDto> findStudentsByExamScore(String exam, int score) {
+
+		return studentRepository.findByExamAndScoreGreaterThanEqual(exam, score)
+				.filter(s->s.getScores().containsKey(exam))
+				.filter(s -> s.getScores().get(exam) >=score)
+				.map(s -> modelMapper.map(s, StudentResponseDto.class))
+				.collect(Collectors.toList());
 	}
 
 }
